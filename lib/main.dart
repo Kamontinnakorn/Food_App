@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -81,22 +83,24 @@ class FoodSnackPage extends StatelessWidget {
     },
   ];
 
+  FoodSnackPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('แนะนำอาหารและของว่าง'),
+        title: const Text('แนะนำอาหารและของว่าง'),
         backgroundColor: Colors.deepPurple,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text('อาหารแนะนำ', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ),
           Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             height: 250,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -117,10 +121,10 @@ class FoodSnackPage extends StatelessWidget {
                   },
                   child: Container(
                     width: 150,
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      boxShadow: [BoxShadow(blurRadius: 5, color: Colors.grey)],
+                      boxShadow: const [BoxShadow(blurRadius: 5, color: Colors.grey)],
                       image: DecorationImage(
                         image: NetworkImage(foodItems[index]['image']!),
                         fit: BoxFit.cover,
@@ -130,11 +134,12 @@ class FoodSnackPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
+                          // ignore: deprecated_member_use
                           color: Colors.black.withOpacity(0.6),
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             foodItems[index]['name']!,
-                            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
@@ -144,12 +149,12 @@ class FoodSnackPage extends StatelessWidget {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text('แนะนำของว่าง', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ),
           Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             height: 200,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -170,10 +175,10 @@ class FoodSnackPage extends StatelessWidget {
                   },
                   child: Container(
                     width: 150,
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      boxShadow: [BoxShadow(blurRadius: 5, color: Colors.grey)],
+                      boxShadow: const [BoxShadow(blurRadius: 5, color: Colors.grey)],
                       image: DecorationImage(
                         image: NetworkImage(snackItems[index]['image']!),
                         fit: BoxFit.cover,
@@ -183,11 +188,12 @@ class FoodSnackPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
+                          // ignore: deprecated_member_use
                           color: Colors.black.withOpacity(0.6),
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             snackItems[index]['name']!,
-                            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
@@ -207,9 +213,10 @@ class FoodDetailPage extends StatelessWidget {
   final int index;
   final List<Map<String, String>> foodItems;
 
-  FoodDetailPage({required this.index, required this.foodItems});
+  const FoodDetailPage({super.key, required this.index, required this.foodItems});
 
   
+  // ignore: non_constant_identifier_names
   Future<void> _launchYouTube(String Url) async {
     final Uri url = Uri.parse(Url);
     if (!await launchUrl(url)) {
@@ -231,29 +238,29 @@ class FoodDetailPage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             Image.network(foodItem['image']!),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'ที่มาของอาหาร: ${foodItem['origin']}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'ส่วนผสม: ${foodItem['ingredients']}',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'วิธีทำ: ${foodItem['instructions']}',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Column(
               children: [
                 ElevatedButton(
                   onPressed: () {
                     _launchYouTube(foodItem['youtubeUrl']!); // เปิด YouTube
                   },
-                  child: Text('ดูใน YouTube'),
+                  child: const Text('ดูใน YouTube'),
                 ),
                 
                 Row(
@@ -263,17 +270,17 @@ class FoodDetailPage extends StatelessWidget {
                       onPressed: () {
                         // Handle Like
                       },
-                      icon: Icon(Icons.thumb_up, color: Colors.blue),
+                      icon: const Icon(Icons.thumb_up, color: Colors.blue),
                     ),
                     IconButton(
                       onPressed: () {
                         // Handle Dislike
                       },
-                      icon: Icon(Icons.thumb_down, color: Colors.red),
+                      icon: const Icon(Icons.thumb_down, color: Colors.red),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 // Button to go to next food item
                 ElevatedButton(
                   onPressed: () {
@@ -288,13 +295,13 @@ class FoodDetailPage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text('ไปหน้าถัดไป'),
+                  child: const Text('ไปหน้าถัดไป'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.popUntil(context, ModalRoute.withName('/')); // กลับไปหน้าโฮม
                   },
-                  child: Text('กลับไปหน้าหลัก'),
+                  child: const Text('กลับไปหน้าหลัก'),
                 ),
               ],
             ),
@@ -309,9 +316,10 @@ class SnackDetailPage extends StatelessWidget {
   final int index;
   final List<Map<String, String>> snackItems;
 
-  SnackDetailPage({required this.index, required this.snackItems});
+  const SnackDetailPage({super.key, required this.index, required this.snackItems});
 
   // ฟังก์ชันสำหรับเปิด URL
+  // ignore: non_constant_identifier_names
   Future<void> _launchYouTube(String Url) async {
     final Uri url = Uri.parse(Url);
     if (!await launchUrl(url)) {
@@ -333,29 +341,29 @@ class SnackDetailPage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             Image.network(snackItem['image']!),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'ที่มาของของว่าง: ${snackItem['origin']}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'ส่วนผสม: ${snackItem['ingredients']}',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'วิธีทำ: ${snackItem['instructions']}',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Column(
               children: [
                 ElevatedButton(
                   onPressed: () {
                     _launchYouTube(snackItem['youtubeUrl']!); // เปิด YouTube
                   },
-                  child: Text('ดูใน YouTube'),
+                  child: const Text('ดูใน YouTube'),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -364,17 +372,17 @@ class SnackDetailPage extends StatelessWidget {
                       onPressed: () {
                         // Handle Like
                       },
-                      icon: Icon(Icons.thumb_up, color: Colors.blue),
+                      icon: const Icon(Icons.thumb_up, color: Colors.blue),
                     ),
                     IconButton(
                       onPressed: () {
                         // Handle Dislike
                       },
-                      icon: Icon(Icons.thumb_down, color: Colors.red),
+                      icon: const Icon(Icons.thumb_down, color: Colors.red),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 // Button to go to next snack item
                 ElevatedButton(
                   onPressed: () {
@@ -389,13 +397,13 @@ class SnackDetailPage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text('ไปหน้าถัดไป'),
+                  child: const Text('ไปหน้าถัดไป'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.popUntil(context, ModalRoute.withName('/')); // กลับไปหน้าโฮม
                   },
-                  child: Text('กลับไปหน้าหลัก'),
+                  child: const Text('กลับไปหน้าหลัก'),
                 ),
               ],
             ),
