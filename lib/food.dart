@@ -329,7 +329,7 @@ class SnackDetailPage extends StatelessWidget {
               'วิธีทำ: ${snackItem['instructions']}',
               style: const TextStyle(fontSize: 16),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 10), {
             Column(
               children: [
                 ElevatedButton(
