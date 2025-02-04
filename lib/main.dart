@@ -406,7 +406,7 @@ class SnackDetailPage extends StatelessWidget {
                 ),
               ],
             ),
-          ], jgrksgjsdjkloswgkm
+          ],
         ),
       ),
     );
